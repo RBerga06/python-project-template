@@ -6,7 +6,6 @@ Substitute variables in the newly-created repository.
 To be used until https://github.com/community/community/discussions/5336 is resolved.
 """
 from __future__ import annotations
-from typing import NamedTuple
 from pathlib import Path
 from contextlib import suppress
 import shutil
@@ -56,9 +55,7 @@ def fix_contents(file: Path) -> None:
 
 def fix(root: Path) -> None:
     """Fix the given path (file or dir) [and its subpaths as well]."""
-    print(f"Fixing {root}")
     root = fix_path(root)
-    print(f"File has been renamed to {root}")
     if root.is_file():
         fix_contents(root)
     elif root.is_dir():
@@ -69,8 +66,9 @@ def fix(root: Path) -> None:
 def main():
     print("Please fill in the relevant tokens:")
     SUBS.clear()
-    for token, (help, default) in TOKENS.items():
-        default = fix_str(default)
+    for token, (default, help) in TOKENS.items():
+        if default is not None:
+            default = fix_str(default)
         SUBS[f"__{token}__"] = (
             input(f" • {help}: ") if default is None else
             input(f" • {help} (default: {default}): ") or default
