@@ -5,7 +5,7 @@ import typer
 from ..__about__ import *
 
 
-NAME = __dist__.entry_points.select(module=__name__, attr="app")[0].name
+NAME = next(iter(__dist__.entry_points.select(module=__name__, attr="app"))).name
 
 
 app = typer.Typer(
