@@ -35,7 +35,7 @@ Issues = "https://github.com/__REPO__/issues"
 Source = "https://github.com/__REPO__"
 
 [project.scripts]
-__CLINAME__ = "__NAME__.cli:app"
+__CLINAME__ = "__PYNAME__.cli:app"
 
 
 [tool.hatch.envs.default]
