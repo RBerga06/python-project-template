@@ -1,10 +1,5 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [project]
-name = "__NAME__"
-version = "__VERSION__"
+name = "__PROJECT__"
 description = "__DESC__"
 readme = "README.md"
 requires-python = ">=3.7"
@@ -27,7 +22,9 @@ classifiers = [
 dependencies = [
     "typer",
 ]
-dynamic = []
+dynamic = [
+    "version"
+]
 
 [project.urls]
 Documentation = "https://github.com/__REPO__#readme"
@@ -35,17 +32,31 @@ Issues = "https://github.com/__REPO__/issues"
 Source = "https://github.com/__REPO__"
 
 [project.scripts]
-__CLINAME__ = "__PYNAME__.cli:app"
+#__IFDEF:CLI__#
+__COMMAND__ = "__PACKAGE__.cli:app"
+#__ENDIF:CLI__#
 
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+
+[tool.hatch.version]
+path = "src/__PACKAGE__/__about__.py"
 
 [tool.hatch.envs.default]
 dependencies = ["pytest", "pytest-cov"]
 [tool.hatch.envs.default.scripts]
-cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=src/__PYNAME__ --cov=tests {args}"
+cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=src/marks_calc --cov=tests {args}"
 no-cov = "cov --no-cov {args}"
 
 [[tool.hatch.envs.test.matrix]]
 python = ["37", "38", "39", "310", "311"]
+
+
 
 [tool.coverage.run]
 branch = true
