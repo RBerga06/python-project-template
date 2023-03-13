@@ -5,11 +5,8 @@ import typer
 from ..__about__ import *
 
 
-NAME = next(iter(__dist__.entry_points.select(module=__name__, attr="app"))).name
-
-
 app = typer.Typer(
-    name=NAME,
+    name=__command__,
     context_settings=dict(
         help_option_names=['-h', '--help']
     ),
@@ -19,7 +16,7 @@ app = typer.Typer(
 
 def version(version: bool) -> None:
     if version:
-        typer.echo(f"{NAME}: {__version__}")
+        typer.echo(f"{__command__}: {__version__}")
         raise typer.Exit()
 
 
