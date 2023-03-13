@@ -3,6 +3,6 @@
 
 if __name__ == "__main__":
     import sys
-    from __PACKAGE__.cli import app
+    from $PACKAGE$.cli import app
 
     sys.exit(app())

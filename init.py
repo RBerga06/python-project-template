@@ -11,23 +11,23 @@ from contextlib import suppress
 import shutil
 import os
 
-FMT_TOKEN = "__{0}__"
-FMT_FLAGL = "#__IFDEF:{0}__#"
-FMT_FLAGR = "#__ENDIF:{0}__#"
+FMT_TOKEN = "${0}$"
+FMT_FLAGL = "$IFDEF:{0}$"
+FMT_FLAGR = "$ENDIF:{0}$"
 FMT_FLAGN = "NO{0}"
 DEFAULT_AUTHOR = "RBerga06"
 DEFAULT_EMAIL  = "78449715+RBerga06@users.noreply.github.com"
 
 
 TOKENS = dict[str, tuple[str | None, str]](
-    AUTHOR  = (DEFAULT_AUTHOR,            "author username"),
-    EMAIL   = (DEFAULT_EMAIL,             "author email"),
-    PROJECT = (None,                      "project name"),
-    VERSION = ("0.0.1.dev0",              "project version"),
-    DESC    = (None,                      "project description"),
-    PACKAGE = ("__PROJECT__",             "Python module name"),
-    COMMAND = ("__PROJECT__",             "cli command name"),
-    REPO    = ("__AUTHOR__/__PROJECT__",  "GitHub repository"),
+    AUTHOR  = (DEFAULT_AUTHOR,        "author username"),
+    EMAIL   = (DEFAULT_EMAIL,         "author email"),
+    PROJECT = (None,                  "project name"),
+    VERSION = ("0.0.1.dev0",          "project version"),
+    DESC    = (None,                  "project description"),
+    PACKAGE = ("$PROJECT$",           "Python module name"),
+    COMMAND = ("$PROJECT$",           "cli command name"),
+    REPO    = ("$AUTHOR$/$PROJECT$",  "GitHub repository"),
 )
 
 FEATURES = dict[str, tuple[bool | None, str]](

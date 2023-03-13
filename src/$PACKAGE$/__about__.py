@@ -5,9 +5,9 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 # Project information
-__project__ = "__PROJECT__"  # Distribution name#__IFDEF:CLI__#
-__command__ = "__COMMAND__"  # CLI main command name#__ENDIF:CLI__#
-__version__ = "__VERSION__"  # managed by `hatch`
+__project__ = "$PROJECT$"  # Distribution name#__IFDEF:CLI__#
+__command__ = "$COMMAND$"  # CLI main command name#__ENDIF:CLI__#
+__version__ = "$VERSION$"  # managed by `hatch`
 
 
 if TYPE_CHECKING:
@@ -21,7 +21,7 @@ else:
 
 @cache
 def __dist__() -> Distribution:
-    """Cached `importlib.metadata.distribution("__PROJECT__")`."""
+    """Cached `importlib.metadata.distribution("$PROJECT$")`."""
     from importlib.metadata import distribution
     return distribution("marks-calc")
 
