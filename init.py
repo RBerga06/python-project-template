@@ -25,7 +25,7 @@ TOKENS = dict[str, tuple[str | None, str]](
     PROJECT = (None,                  "project name"),
     VERSION = ("0.0.1.dev0",          "project version"),
     DESC    = (None,                  "project description"),
-    PACKAGE = ("$PROJECT$",           "Python module name"),
+    PACKAGE = ("$PROJECT$",           "Python package name"),
     COMMAND = ("$PROJECT$",           "cli command name"),
     REPO    = ("$AUTHOR$/$PROJECT$",  "GitHub repository"),
 )
